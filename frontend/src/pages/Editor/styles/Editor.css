@@ -1,0 +1,14 @@
+.remote-cursor {
+  border-left: 2px solid red;
+  height: 100%;
+}
+
+.remote-cursor-label::after {
+  content: '●';
+  color: red;
+  margin-left: 2px;
+}
+
+.remote-selection {
+  background-color: rgba(255, 0, 0, 0.2);
+}

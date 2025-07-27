@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal box */
+.modal {
+  background-color: #1f1f1f;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.modal input[type="email"] {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  width: 100%;
+  background-color: #333;
+  color: white;
+}
+
+.modal button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Share button in Editor header */
+.share-btn {
+  padding: 8px 14px;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Loading & error text */
+.editor-loading,
+.editor-error {
+  color: white;
+  font-size: 1.2rem;
+  padding: 2rem;
+  text-align: center;
+}

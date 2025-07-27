@@ -1,0 +1,54 @@
+# -------------------
+# Node Modules
+# -------------------
+**/node_modules/
+
+# -------------------
+# Logs
+# -------------------
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# -------------------
+# dotenv environment variables
+# -------------------
+**/.env
+
+# -------------------
+# Build files (React)
+# -------------------
+frontend/build/
+frontend/.next/
+frontend/dist/
+
+# -------------------
+# OS-specific files
+# -------------------
+.DS_Store
+Thumbs.db
+
+# -------------------
+# Editor-specific
+# -------------------
+.vscode/
+.idea/
+
+# -------------------
+# Optional: local MongoDB dump or data files
+# -------------------
+*.local
+*.mongo
+
+# -------------------
+# Coverage Reports
+# -------------------
+**/coverage/
+
+# -------------------
+# Misc
+# -------------------
+*.log
+*.bak
+*.tmp
