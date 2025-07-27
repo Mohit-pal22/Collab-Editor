@@ -11,12 +11,22 @@ const socketHandler = require('./socket/socketHandler'); // 👈 NEW
 require("dotenv").config();
 
 const app = express();
-const allowedOrigins = [ "http://localhost:5173", process.env.CLIENT_URL ];
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Origin allowed
+    } else {
+      callback(new Error("CORS policy: Origin not allowed"));
+    }
+  },
   credentials: true
 }));
+
 
 app.use(express.json());
 
