@@ -11,7 +11,9 @@ const socketHandler = require('./socket/socketHandler'); // 👈 NEW
 require("dotenv").config();
 
 const app = express();
-const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
+const allowedOrigins = ["http://localhost:3000"];
+if (process.env.CLIENT_URL) allowedOrigins.push(process.env.CLIENT_URL);
+
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -21,7 +23,8 @@ app.use(cors({
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true); // Origin allowed
     } else {
-      callback(new Error("CORS policy: Origin not allowed"));
+      console.warn(`CORS Blocked: ${origin}`);
+      callback(null, false); // instead of throwing
     }
   },
   credentials: true
@@ -43,8 +46,8 @@ const io = new Server(server, {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        console.warn(`Blocked CORS request from: ${origin}`);
-        callback(new Error("Not allowed by CORS"));
+        console.warn(`CORS Blocked: ${origin}`);
+        callback(null, false); // instead of throwing
       }
     },
     methods: ["GET", "POST"],
