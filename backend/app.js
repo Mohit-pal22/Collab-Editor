@@ -41,19 +41,21 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: (origin, callback) => {
-      // Allow requests with no origin (e.g. mobile apps, curl)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.warn(`CORS Blocked: ${origin}`);
-        callback(null, false); // instead of throwing
-      }
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true); // Origin allowed
+    } else {
+      console.warn(`CORS Blocked: ${origin}`);
+      callback(null, false); // instead of throwing
+    }
     },
-    methods: ["GET", "POST"],
     credentials: true
   }
 });
+
 
 // 🔌 Use socket handler here
 socketHandler(io);
