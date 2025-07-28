@@ -11,7 +11,7 @@ const socketHandler = require('./socket/socketHandler'); // 👈 NEW
 require("dotenv").config();
 
 const app = express();
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [];
 if (process.env.CLIENT_URL) allowedOrigins.push(process.env.CLIENT_URL);
 
 
